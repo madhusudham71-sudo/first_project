@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aarav & Meera | Wedding Celebration</title>
+  <meta name="description" content="Join us as we celebrate our wedding day with love, laughter, and cherished memories." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f6f0ee;
+      --card: rgba(255,255,255,0.72);
+      --text: #2e1d1a;
+      --muted: #6b544f;
+      --accent: #b67562;
+      --accent-strong: #8c4e3a;
+      --gold: #d8b36b;
+      --shadow: rgba(47, 27, 25, 0.12);
+      --line: rgba(46, 29, 26, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      background: linear-gradient(180deg, #f5efe8 0%, #f9f5f2 100%);
+      color: var(--text);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 25;
+      backdrop-filter: blur(12px);
+      background: rgba(246, 240, 238, 0.75);
+      border-bottom: 1px solid rgba(46, 29, 26, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      gap: 24px;
+    }
+
+    .brand {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2rem, 3vw, 2.4rem);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 0.96rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 100%;
+      height: 1px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform 0.25s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .cta-button,
+    .outline-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 999px;
+      padding: 15px 24px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .cta-button {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-strong) 100%);
+      color: #fff;
+      box-shadow: 0 16px 30px rgba(140,78,58,0.2);
+    }
+
+    .outline-button {
+      background: transparent;
+      border-color: rgba(46,29,26,0.2);
+      color: var(--text);
+    }
+
+    .cta-button:hover,
+    .outline-button:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 760px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(24, 18, 17, 0.15), rgba(24, 18, 17, 0.26)),
+        url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(245, 239, 232, 0.12), rgba(245, 239, 232, 0.28));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      color: #fff;
+      padding: 80px 20px 60px;
+    }
+
+    .eyebrow {
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      font-size: 0.77rem;
+      opacity: 0.9;
+      margin-bottom: 20px;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .hero h1 {
+      font-size: clamp(4rem, 8vw, 7rem);
+      line-height: 0.9;
+      color: #fff;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .hero .names {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(18px, 3vw, 48px);
+      margin: 10px auto 20px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(2.5rem, 5vw, 5rem);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero .names span {
+      white-space: nowrap;
+    }
+
+    .hero .and {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      opacity: 0.8;
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .hero-subtitle {
+      font-size: 1.08rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .save-card {
+      position: absolute;
+      left: 50%;
+      bottom: 24px;
+      transform: translateX(-50%);
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
+      backdrop-filter: blur(8px);
+      border-radius: 18px;
+      padding: 18px 26px;
+      min-width: min(520px, calc(100% - 24px));
+      color: #fff;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .save-card-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .save-card strong {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.29em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .save-card .date {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .countdown-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 12px;
+    }
+
+    .time-block {
+      min-width: 88px;
+      padding: 12px 10px 10px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.2);
+      text-align: center;
+    }
+
+    .time-block strong {
+      display: block;
+      font-size: clamp(1.4rem, 2vw, 2rem);
+      font-family: "Cormorant Garamond", serif;
+      color: #fff;
+    }
+
+    .time-block span {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+
+    section {
+      padding: 110px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-heading .eyebrow {
+      color: var(--accent-strong);
+      letter-spacing: 0.28em;
+      margin-bottom: 8px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2.8rem, 5vw, 4rem);
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .story {
+      background: rgba(255,255,255,0.2);
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .story-card {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: 0 25px 60px var(--shadow);
+      overflow: hidden;
+    }
+
+    .story-card img {
+      height: 560px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .story-copy {
+      padding: 18px 0;
+    }
+
+    .story-copy p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.9;
+      margin: 0 0 22px;
+    }
+
+    .quote {
+      padding: 28px 30px;
+      border-left: 3px solid var(--gold);
+      background: rgba(216,179,107,0.08);
+      border-radius: 18px;
+      color: var(--text);
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.2;
+      margin-top: 10px;
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 26px;
+    }
+
+    .info-card {
+      background: rgba(255,255,255,0.72);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 26px;
+      text-align: center;
+      box-shadow: 0 18px 38px rgba(46,29,26,0.05);
+    }
+
+    .icon {
+      width: 64px;
+      height: 64px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: rgba(182,117,98,0.1);
+      color: var(--accent-strong);
+      font-size: 1.7rem;
+    }
+
+    .info-card h3 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .info-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .gallery {
+      padding-top: 0;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .gallery-grid img {
+      width: 100%;
+      height: 330px;
+      object-fit: cover;
+      border-radius: 22px;
+      box-shadow: 0 18px 32px rgba(46,29,26,0.08);
+    }
+
+    .rsvp {
+      background:
+        linear-gradient(180deg, rgba(42, 28, 25, 0.74), rgba(42, 28, 25, 0.72)),
+        url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      color: #fff;
+    }
+
+    .rsvp-box {
+      max-width: 720px;
+      margin: 0 auto;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 28px;
+      padding: 38px 30px;
+      text-align: center;
+      backdrop-filter: blur(6px);
+    }
+
+    .rsvp-box h2 {
+      color: #fff;
+      font-size: clamp(2.8rem, 5vw, 4rem);
+      margin-bottom: 18px;
+    }
+
+    .rsvp-box p {
+      color: rgba(255,255,255,0.82);
+      font-size: 1.04rem;
+      line-height: 1.8;
+      margin-bottom: 24px;
+    }
+
+    .cta-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer {
+      padding: 28px 0 45px;
+      text-align: center;
+      color: var(--muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.76rem;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+      }
+
+      .story-grid,
+      .details-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid img {
+        height: 420px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero {
+        min-height: 670px;
+      }
+
+      .hero .names {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .hero .and {
+        display: none;
+      }
+
+      .save-card {
+        bottom: 16px;
+      }
+
+      .save-card-inner {
+        justify-content: center;
+        text-align: center;
+      }
+
+      .countdown-box {
+        width: 100%;
+      }
+
+      .time-block {
+        flex: 1 1 calc(50% - 12px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#top" class="brand">A & M</a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#story">Our Story</a>
+        <a href="#details">Wedding</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#rsvp">RSVP</a>
+      </nav>
+      <a class="cta-button" href="#rsvp">RSVP</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="Wedding invitation hero section">
+      <div class="hero-content container">
+        <div class="eyebrow">With joy in our hearts</div>
+        <div class="names">
+          <span>Madhu</span>
+          <span class="and">&</span>
+          <span>Meera</span>
+        </div>
+        <div class="hero-subtitle">Invite you to celebrate our wedding</div>
+        <div class="hero-actions">
+          <a class="cta-button" href="#rsvp">Reserve Your Seat</a>
+          <a class="outline-button" href="#details">View Details</a>
+        </div>
+      </div>
+
+      <div class="save-card">
+        <div class="save-card-inner">
+          <div>
+            <strong>Save the date</strong>
+            <div class="date">09 September 2027</div>
+          </div>
+          <div class="countdown-box" aria-label="Wedding countdown">
+            <div class="time-block"><strong id="days">00</strong><span>Days</span></div>
+            <div class="time-block"><strong id="hours">00</strong><span>Hours</span></div>
+            <div class="time-block"><strong id="minutes">00</strong><span>Minutes</span></div>
+            <div class="time-block"><strong id="seconds">00</strong><span>Seconds</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="story" id="story">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Our Love Story</div>
+          <h2>A journey made of laughter & forever</h2>
+        </div>
+
+        <div class="story-grid">
+          <div class="story-card">
+            <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1200&q=80" alt="Couple smiling together" />
+          </div>
+
+          <div class="story-copy">
+            <p>
+              From the very first conversation, we felt as though the world had slowed down.
+              What began with a chance meeting blossomed into a friendship filled with warmth,
+              shared dreams, and countless little moments that made us fall deeper in love each day.
+            </p>
+            <p>
+              Through every season of life, we have discovered the beauty of growing together—through quiet
+              nights, joyful celebrations, and the simple comfort of being truly seen and loved.
+              We are so grateful to share this next chapter with the people who have shaped our story.
+            </p>
+            <div class="quote">“We found our forever in the little moments we chose to share.”</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="details">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Wedding Details</div>
+          <h2>The celebration</h2>
+        </div>
+
+        <div class="details-grid">
+          <article class="info-card">
+            <div class="icon">✦</div>
+            <h3>Ceremony</h3>
+            <p>
+              Saturday, 9 September 2027<br />
+              4:30 PM onwards<br />
+              The Grand Marquee, Rosewood Estate
+            </p>
+          </article>
+
+          <article class="info-card">
+            <div class="icon">❀</div>
+            <h3>Reception</h3>
+            <p>
+              Sunset dinner & dancing<br />
+              7:00 PM onwards<br />
+              Garden Courtyard, Rosewood Estate
+            </p>
+          </article>
+
+          <article class="info-card">
+            <div class="icon">⌂</div>
+            <h3>Address</h3>
+            <p>
+              18 Meadow Lane<br />
+              Hillside, New Delhi<br />
+              Entry via North Gate
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Our Moments</div>
+          <h2>Captured memories</h2>
+        </div>
+
+        <div class="gallery-grid">
+          <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=900&q=80" alt="Wedding couple photo 1" />
+          <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=80" alt="Wedding couple photo 2" />
+          <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?auto=format&fit=crop&w=900&q=80" alt="Wedding couple photo 3" />
+          <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=900&q=80" alt="Wedding couple photo 4" />
+        </div>
+      </div>
+    </section>
+
+    <section class="rsvp" id="rsvp">
+      <div class="container">
+        <div class="rsvp-box">
+          <div class="eyebrow" style="color: rgba(255,255,255,0.8);">Join us</div>
+          <h2>We hope you can celebrate with us</h2>
+          <p>
+            Your presence would mean the world as we begin this beautiful new chapter together.
+            Kindly RSVP by 15 August 2027 and let us know if you will be joining us for this joyful occasion.
+          </p>
+          <div class="cta-row">
+            <a class="cta-button" href="mailto:hello@aaravandmeera.com?subject=RSVP%20for%20Wedding">RSVP Now</a>
+            <a class="outline-button" href="tel:+919876543210" style="border-color: rgba(255,255,255,0.35); color: #fff;">Call Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">Aarav & Meera • 09.09.2027 • With love</div>
+  </footer>
+
+  <script>
+    const weddingDate = new Date('2027-09-09T16:30:00');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = weddingDate - now;
+
+      if (diff <= 0) {
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById('days').textContent = String(days).padStart(2, '0');
+      document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+      document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+</body>
+</html>
